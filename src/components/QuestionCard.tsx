@@ -2,7 +2,7 @@ import React from 'react'
 import Option from './Option'
 
 type Props = question & {
-    updateScore: { (num: number): void };
+    updateScore: { (num: number, correct:boolean): void };
     userAnswered: number;
 }
 
@@ -12,9 +12,9 @@ const QuestionCard: React.FC<Props> = ({ questionText, correct, incorrect, optio
         if (userAnswered===-1) {
             const ans = options[index]
             if (ans === correct) {
-                updateScore(index)
+                updateScore(index, true)
             } else {
-                updateScore(index)
+                updateScore(index, false)
             }
         }
     };

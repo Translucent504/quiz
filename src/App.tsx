@@ -24,8 +24,8 @@ function App() {
     setLoading(false)
   }
 
-  const updateScore = (num: number) => {
-    if (num >= 0) {
+  const updateScore = (num: number, correct:boolean) => {
+    if (correct) {
       setScore(score + 1)
     }
     setUserAnswered(num)
