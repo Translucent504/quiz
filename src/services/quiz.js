@@ -8,7 +8,7 @@ const shuffle = (options) => {
 }
 
 const fetchQuizQuestions = async () => {
-    const questions = [
+    let questions = [
         {
             questionText: "what is apple?",
             correct: "dinosaur",
@@ -45,9 +45,19 @@ const fetchQuizQuestions = async () => {
             options: []
         }
     ]
+    const response = (await (await fetch("https://opentdb.com/api.php?amount=10")).json()).results
+    questions = response.map(q => {
+        return (
+            {
+                questionText: q.question,
+                correct: q.correct_answer,
+                incorrect: q.incorrect_answers,
+                options: []
+            }
+
+        )
+    })
     questions.forEach((q) => q.options=shuffle(q.incorrect.concat(q.correct)))
-    await new Promise(resolve => setTimeout(resolve, 500))
-    console.log(questions)
     return questions
 }
 
