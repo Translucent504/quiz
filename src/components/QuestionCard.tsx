@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 type Props = question & {
     updateScore: { (num: number): void };
