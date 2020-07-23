@@ -1,6 +1,6 @@
 import React from 'react'
 import Option from './Option'
-
+import Wrapper from './QuestionCard.styles'
 type Props = question & {
     updateScore: { (num: number, correct:boolean): void };
     userAnswered: number;
@@ -20,7 +20,7 @@ const QuestionCard: React.FC<Props> = ({ questionText, correct, incorrect, optio
     };
 
     return (
-        <div>
+        <Wrapper>
             <p dangerouslySetInnerHTML={{__html: questionText}}/>
             <ul className="options">
                 {options.map((option, index) => {
@@ -36,7 +36,7 @@ const QuestionCard: React.FC<Props> = ({ questionText, correct, incorrect, optio
                     )
                 })}
             </ul>
-        </div>
+        </Wrapper>
     )
 }
 

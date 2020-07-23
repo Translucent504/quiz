@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import QuestionCard from './components/QuestionCard'
 import fetchQuizQuestions from './services/quiz'
+import { Wrapper, GlobalStyle } from './App.styles'
 
 function App() {
   const [loading, setLoading] = useState(false)
@@ -24,7 +25,7 @@ function App() {
     setLoading(false)
   }
 
-  const updateScore = (num: number, correct:boolean) => {
+  const updateScore = (num: number, correct: boolean) => {
     if (correct) {
       setScore(score + 1)
     }
@@ -35,16 +36,18 @@ function App() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
       setUserAnswered(-1)
-    } 
+    }
   }
 
   return (
-    <div>
-      <h1>Quiz</h1>
+    <>
+    <GlobalStyle/>
+    <Wrapper>
+      <h1>ERU Quiz</h1>
       <button onClick={newGame}>New Game</button>
-      <p >Score: {score}</p>
-      {gameStarted && <p>Question: {currentQuestion + 1}/{questions.length}</p>}
-      <p style={showWhenLoading}>Loading...</p>
+      <h2 >Score: {score}</h2>
+      {gameStarted && <h2>Question: {currentQuestion + 1}/{questions.length}</h2>}
+      <h1 style={showWhenLoading}>Loading...</h1>
       <div style={hideWhenLoading}>
         {gameStarted && <QuestionCard
           options={questions[currentQuestion].options}
@@ -55,7 +58,8 @@ function App() {
           incorrect={questions[currentQuestion].incorrect} />}
       </div>
       {currentQuestion < questions.length - 1 && gameStarted && <button onClick={nextQuestion}>Next Question</button>}
-    </div>
+    </Wrapper>
+    </>
   );
 }
 
