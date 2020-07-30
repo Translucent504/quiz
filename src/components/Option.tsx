@@ -38,7 +38,7 @@ const Option:React.FC<Props> = ({option, userAnswered, correct, index, checkAnsw
     }
     
     return (
-       <li onClick={handleClick} style={optionStyle} dangerouslySetInnerHTML={{__html:option}}/>
+       <li data-testid='option' onClick={handleClick} style={optionStyle} dangerouslySetInnerHTML={{__html:option}}/>
     )
 }
 
