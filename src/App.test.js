@@ -13,7 +13,7 @@ describe('<App />', () => {
     })
 
     test('should render Quiz heading, New Game button and score', () => {
-        const heading = component.getByText('ER Quiz')
+        const heading = component.getByText('ERU Quiz')
         expect(heading).toBeDefined()
 
         const newGame = component.getByText('New Game')
